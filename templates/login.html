@@ -1,0 +1,20 @@
+{% if form.errors %}    
+    <p><b>Erro(s) encontrado(s):</b></p>
+    {{ form.non_field_errors }}
+    <ul>
+        {% for field in form %}
+            {% if field.errors %}<li>{{ field.errors|escape|striptags }}</li>{% endif %}
+        {% endfor %}
+    </ul>    
+{% endif %}
+
+<h2>Acessar o sistema</h2>
+<p>Informe seu usuário e senha</p>
+<form id="login" method="post">
+    {% csrf_token %}
+    <input type="text" id="username" name="username"  placeholder="E-mail ou usuário" required autofocus>
+    <br>
+    <input type="password" id="password" name="password"  placeholder="Senha" required>
+    <br>        
+    <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Entrar</button>
+</form>
